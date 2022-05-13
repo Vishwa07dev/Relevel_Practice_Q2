@@ -22,7 +22,7 @@ mongoose.connect(dbConfig.DB_URL, async () => {
     try {
         const user = await User.create({
             name: "Vishwa Mohan",
-            emaildId: "kankvish@gmail.com",
+            emailId: "kankvish@gmail.com",
             userType: constant.userType.admin,
             address: {
                 type: "Point",
@@ -33,9 +33,9 @@ mongoose.connect(dbConfig.DB_URL, async () => {
     } catch (err) {
         console.log(err.message);
     }
-
-
 })
+
+require('./routes')(app);
 
 /**
  * Start the express server
