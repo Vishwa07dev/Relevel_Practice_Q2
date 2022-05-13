@@ -17,11 +17,9 @@
   },
   "homepage": "https://github.com/Vishwa07dev/Relevel_Practice_Q2#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "mogoose": "^0.0.1-security",
     "mongoose": "^6.3.3"
   }
 }
