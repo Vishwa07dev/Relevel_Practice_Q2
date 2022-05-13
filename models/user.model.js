@@ -1,30 +1,28 @@
-
-const mongoose = require("mongoose");
-const addressSchema = require("./address.model");
+const mongoose = require('mongoose');
+const addressSchema = require('./address.model');
 const constants = require("../utils/constants");
 
 const userSchema = new mongoose.Schema({
-    
+
     name : {
         type : String,
         required : true
     },
-    emailId : {
+    emaildId :{ 
         type : String,
-        required : true,
-        unique : true
+        required : true 
     },
-    linkedInProfile: {
-        type: String,
+    linkedInProfile : {
+        type : String
     },
-    type: {
-        type: String,
-        enum: [constants.userTypes.student, constants.userTypes.admin],
-        default: constants.userTypes.student
+    type : {
+        type : String,
+        enum : [constants.userTypes.student, constants.userTypes.admin],
+        default : constants.userTypes.student
     },
-    address: {          //Embedded schema
-        type: addressSchema,
-        required: true
+    address : {      //Embedded schema
+        type : addressSchema,
+        required : true
     }
 
 });
