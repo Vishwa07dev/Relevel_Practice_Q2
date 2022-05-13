@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const addressSchema = require('./address.model');
+const constants = require("../utils/constants");
 
 const userSchema = new mongoose.Schema({
 

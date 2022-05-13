@@ -26,6 +26,7 @@ mongoose.connect(dbConfig.DB_URL, async () => {
         emaildId: "kankvish@gmail.com",
         userType: constant.userType.admin,
         address: {
+            type: "Point",
             coordinates: [ 14.442599, 79.986458 ]
         }
     });
