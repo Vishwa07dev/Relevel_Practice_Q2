@@ -4,7 +4,7 @@ const User = require("../models/user.model");
 checkFields = async (req, res, next) => {
     
     if(!(req.body.name && req.body.emailId && req.body.linkedInProfile && req.body.address)) {
-        return res.status(200).send({
+        return res.status(400).send({
             message: "All fields required"
         });
     }
@@ -19,7 +19,7 @@ isUserExists = async (req, res, next) => {
     });
 
     if(user.length == 0 || user == null) {
-        return res.status(500).send({
+        return res.status(404).send({
             message: "User not found",
         });
     }
