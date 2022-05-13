@@ -1,11 +1,11 @@
 
-const authController = require("../controllers/auth.controller");
-const {authUser} = require("../middlewares");
+const userController = require("../controllers/user.controller");
+const {userCheckPoint} = require("../middlewares");
 
 
 module.exports = (app)=>{
     
-    app.post("/studentFinderApp/api/v1/users", [authUser.checkFields], authController.signup);
-    app.put("/studentFinderApp/api/v1/users/{id}", [authUser.isUserExists], authController.signup);
+    app.post("/studentFinderApp/api/v1/users", [userCheckPoint.checkFields], userController.signup);
+    app.put("/studentFinderApp/api/v1/users/{id}", [userCheckPoint.isUserExists], userController.signup);
     
 }

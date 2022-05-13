@@ -1,5 +1,4 @@
 const User = require("../models/user.model");
-const Constants = require("../utils/constants");
 
 
 checkFields = async (req, res, next) => {
