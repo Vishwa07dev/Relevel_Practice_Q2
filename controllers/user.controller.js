@@ -13,14 +13,12 @@
         address: {
             type: req.body.address.type,
             coordinates: [
-                req.body.address.long,
-                req.body.address.lat
+                req.body.address.coordinates[0],
+                req.body.address.coordinates[1]
             ]
         }
     }
-
     try {
-
         const user = await User.create(userObj);
         console.log(user)
 
@@ -40,7 +38,8 @@
         _id: req.params.id
     });
 
-    if (ticket == null) {
+    console.log(user);
+    if (user == null) {
         return res.status(200).send({
             message: "User doesn't exist"
         })
@@ -49,9 +48,9 @@
     user.name = req.body.name != undefined ? req.body.name : user.name;
     user.emaildId = req.body.emaildId != undefined ? req.body.emaildId : user.emaildId;
     user.linkedInProfile = req.body.linkedInProfile != undefined ? req.body.linkedInProfile : user.linkedInProfile;
-    user.addres.type = req.body.addres.type != undefined ? req.body.addres.type : user.addres.type;
-    user.addres.coordinates[0] = req.body.addres.coordinates[0] != undefined ? req.body.addres.coordinates[0] : user.addres.coordinates[0];
-    user.addres.coordinates[1] = req.body.addres.coordinates[1] != undefined ? req.body.addres.coordinates[1] : user.addres.coordinates[1];
+    user.address.type = req.body.address.type != undefined ? req.body.address.type : user.address.type;
+    user.address.coordinates[0] = req.body.address.coordinates[0] != undefined ? req.body.address.coordinates[0] : user.address.coordinates[0];
+    user.address.coordinates[1] = req.body.address.coordinates[1] != undefined ? req.body.address.coordinates[1] : user.address.coordinates[1];
     
     const updatedUser = await user.save();
 
