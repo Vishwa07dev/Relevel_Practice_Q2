@@ -34,14 +34,6 @@
 
 }
  
- 
- /**
-  * Update the user - status , userType
-  *    - only ADMIN should be allowed to do this
-  * 
-  * ADMIN  - name , userStatus, userType
-  *  
-  */
  exports.updateUser = async (req, res) => {
  
     const user = await User.findOne({
