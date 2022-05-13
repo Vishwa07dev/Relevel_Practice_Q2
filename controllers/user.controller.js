@@ -41,7 +41,7 @@ exports.signup = async (req, res) => {
 exports.updateUser = async (req, res) => {
     try {
 
-    const user = findOne({
+    const user = await find({
         _id: req.params.id
     });
 
