@@ -8,11 +8,11 @@ const addressSchema = new mongoose.Schema({
      * lat, long
      */
     lat : {
-        type : Decimal128,
+        type : mongoose.Types.Decimal128,
         required : true
     },
     long : {
-        type : Decimal128,
+        type : mongoose.Types.Decimal128,
         required : true
     },
     createdAt : {
