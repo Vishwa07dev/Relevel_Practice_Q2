@@ -1,33 +1,15 @@
-
-const mongoose = require("mongoose");
-const constants = require("../utils/constants");
+const mongoose = require('mongoose');
 
 const addressSchema = new mongoose.Schema({
-
-    /**
-     * lat, long
-     */
-    lat : {
-        type : mongoose.Types.Decimal128,
-        required : true
+    type: {
+        type: "String",
+        default: "Point",
+        enum: ["Point"]
     },
-    long : {
-        type : mongoose.Types.Decimal128,
-        required : true
-    },
-    createdAt : {
-        type : Date,
-        immutable : true,
-        default : ()=>{
-            return Date.now();
-        }
-    },
-    updatedAt : {
-        type : Date,
-        default : ()=>{
-            return Date.now();
-        }
+    coordinates: {
+        type: [Number],
+        required: true
     }
 });
 
-module.exports = mongoose.model("Addres", addressSchema);
+module.exports = addressSchema;

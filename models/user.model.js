@@ -1,50 +1,30 @@
-
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const addressSchema = require('./address.model');
 const constants = require("../utils/constants");
 
 const userSchema = new mongoose.Schema({
 
-    /**
-     * name, password, email, createdAt , updatedAt
-     */
     name : {
         type : String,
         required : true
     },
-    email : {
+    emaildId :{ 
         type : String,
-        required : true,
-        unqiue : true
+        required : true 
     },
-    password :{
-        type : String,
-        required : true
-    },
-    userType : {
-        type : String,
-        required : true,
-        default : constants.userType.student
-    },
-    linkedInProfile :{
+    linkedInProfile : {
         type : String
     },
-    createdAt : {
-        type : Date,
-        immutable : true,
-        default : ()=>{
-            return Date.now();
-        }
+    type : {
+        type : String,
+        enum : [constants.userType.admin, constants.userType.student],
+        default : constants.userType.student
     },
-    updatedAt : {
-        type : Date,
-        default : ()=>{
-            return Date.now();
-        }
-    },
-    address: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "Address"
+    address : {      //Embedded schema
+        type : addressSchema,
+        required : true
     }
+
 });
 
 module.exports = mongoose.model("User", userSchema);

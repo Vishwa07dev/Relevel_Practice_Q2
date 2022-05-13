@@ -23,9 +23,11 @@ mongoose.connect(dbConfig.DB_URL, async () => {
 
     const user = await User.create({
         name: "Vishwa Mohan",
-        password: bcrypt.hashSync("Welcome1", 8),
-        email: "kankvish@gmail.com",
-        userType: constant.userType.admin
+        emaildId: "kankvish@gmail.com",
+        userType: constant.userType.admin,
+        address: {
+            coordinates: [ 14.442599, 79.986458 ]
+        }
     });
     console.log("admin created", user);
 
