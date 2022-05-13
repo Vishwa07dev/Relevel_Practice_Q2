@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
     },
     type : {
         type : String,
-        enum : ['STUDENT', 'ADMIN'],
-        default : 'STUDENT'
+        enum : [constants.userType.student, constants.userType.admin],
+        default : constants.userType.student
     },
     address : {      //Embedded schema
         type : addressSchema,
