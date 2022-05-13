@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
 const addressSchema = new mongoose.Schema({
-    lat : {
-        type : mongoose.Types.Decimal128,  
+    type : {
+        type : String,
+        enum : ['Point'],  
         required : true
     },
-    long : {
-        type : mongoose.Types.Decimal128,  
+    coordinates : {
+        type : [Number],
         required : true
     },
     createdAt:{
