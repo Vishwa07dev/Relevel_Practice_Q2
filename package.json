@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Vishwa07dev/Relevel_Practice_Q2/issues"
   },
-  "homepage": "https://github.com/Vishwa07dev/Relevel_Practice_Q2#readme"
+  "homepage": "https://github.com/Vishwa07dev/Relevel_Practice_Q2#readme",
+  "dependencies": {
+    "mongoose": "^6.3.3"
+  }
 }
