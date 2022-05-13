@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 const addressSchema = new mongoose.Schema({
     lat : {
-        type : "Float",  
+        type : "Number",  
         required : true
     },
     long : {
-        type : "Float",  
+        type : "Number",  
         required : true
     },
     createdAt:{
