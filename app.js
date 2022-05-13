@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const dbConfig = require("./configs/db.config");
 const serverConfig = require("./configs/server.config");
 const User = require("./models/user.model");
-const bcrypt = require("bcryptjs");
 const constant = require("./utils/constants");
 
 const app = express();
@@ -20,17 +19,20 @@ mongoose.connect(dbConfig.DB_URL, async () => {
     console.log("MongoDB connected");
 
     await User.collection.drop();// Since this a dev setup
-
-    const user = await User.create({
-        name: "Vishwa Mohan",
-        emaildId: "kankvish@gmail.com",
-        userType: constant.userType.admin,
-        address: {
-            type: "Point",
-            coordinates: [ 14.442599, 79.986458 ]
-        }
-    });
-    console.log("admin created", user);
+    try {
+        const user = await User.create({
+            name: "Vishwa Mohan",
+            emaildId: "kankvish@gmail.com",
+            userType: constant.userType.admin,
+            address: {
+                type: "Point",
+                coordinates: [14.442599, 79.986458]
+            }
+        });
+        console.log("admin created", user);
+    } catch (err) {
+        console.log(err.message);
+    }
 
 
 })
