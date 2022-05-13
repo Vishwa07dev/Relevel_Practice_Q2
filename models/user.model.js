@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const constants = require('../utils/constants')
-
+const addressSchema = require('./address.model')
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -12,9 +12,17 @@ const userSchema = new mongoose.Schema({
         lowercase:true,
         unique:true
     },
-    password:{
+    linkedInProfile : {
+        type : String
+    },
+    userType : {
         type:String,
-        required: true
+        required:true,
+        default: constants.userType.studemt
+    },
+    address : {
+        type: addressSchema,
+        required:true
     },
     createdAt:{
         type: Date,
@@ -28,15 +36,6 @@ const userSchema = new mongoose.Schema({
         default: ()=>{
             return Date.now();
         }
-    },
-    userType : {
-        type:String,
-        required:true,
-        default: constants.userType.studemt
-    },
-    address : {
-        type: [mongoose.SchemaTypes.ObjectId],
-        ref : "Address"
     }
 });
 
