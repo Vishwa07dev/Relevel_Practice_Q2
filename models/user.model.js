@@ -1,6 +1,7 @@
 
 const mongoose = require("mongoose");
 const addressSchema = require("./address.model");
+const constants = require("../utils/constants");
 
 const userSchema = new mongoose.Schema({
     
@@ -18,8 +19,8 @@ const userSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['STUDENT', 'ADMIN'],
-        default: 'STUDENT'
+        enum: [constants.userTypes.student, constants.userTypes.admin],
+        default: constants.userTypes.student
     },
     address: {          //Embedded schema
         type: addressSchema,
