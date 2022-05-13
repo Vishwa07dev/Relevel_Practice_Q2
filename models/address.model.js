@@ -8,11 +8,11 @@ const addressSchema = new mongoose.Schema({
      * lat, long
      */
     lat : {
-        type : Float,
+        type : Decimal128,
         required : true
     },
     long : {
-        type : Float,
+        type : Decimal128,
         required : true
     },
     createdAt : {
@@ -30,4 +30,4 @@ const addressSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Addreess", addressSchema);
+module.exports = mongoose.model("Addres", addressSchema);

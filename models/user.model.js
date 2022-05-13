@@ -5,7 +5,7 @@ const constants = require("../utils/constants");
 const userSchema = new mongoose.Schema({
 
     /**
-     * name, userId, password, email, createdAt , updatedAt
+     * name, password, email, createdAt , updatedAt
      */
     name : {
         type : String,
