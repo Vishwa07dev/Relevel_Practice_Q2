@@ -20,6 +20,8 @@ mongoose.connect(dbConfig.DB_URL, () => {
 
 })
 
+// connect routes
+require("./routes/user.route")(app);
 
 // start express server
 app.listen(serverConfig.PORT, () => {

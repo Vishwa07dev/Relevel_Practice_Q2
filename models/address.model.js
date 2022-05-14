@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 
 const addressSchema = new mongoose.Schema({
-    type:{
+    type: {
         type: String,
         enum: ['Point'],
-        required:true
+        required: true
     },
-    coordinates:{
-        type:[Number],
-        required:true
+    coordinates: {
+        type: [Number],
+        required: true
     }
 });
 
-module.exports =addressSchema;
+module.exports = addressSchema;

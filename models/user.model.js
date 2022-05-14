@@ -19,20 +19,13 @@ const userSchema = new mongoose.Schema({
         default: userTypes.student         //STUDENT | ADMIN 
     },
     linkedInProfile: {
-        type: String,
-        required: true
+        type: String
     },
     address: {
         type: addressSchema,
         required: true
     },
     createdAt: {
-        type: Date,
-        default: () => {
-            return Date.now();
-        }
-    },
-    updatedAt: {
         type: Date,
         default: () => {
             return Date.now();
