@@ -50,6 +50,8 @@ exports.updateUser = async (req, res) => {
     user.emailId = req.body.name != undefined ? req.body.name: user.emailId;
     user.address = req.body.address != undefined ? req.body.address: user.address;
     user.linkedInProfile = req.body.linkedInProfile != undefined ? req.body.linkedInProfile: user.linkedInProfile;
+    user.address = req.body.address != undefined ? req.body.address: user.address;
+    
 
     const updatedUserDetails = await user.save();
 
