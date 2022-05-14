@@ -50,7 +50,7 @@ exports.updateUser = async(req,res) =>{
         student.address = req.body.address != undefined ? req.body.address : student.address;
         student.address.coordinates[0] = req.body.address.coordinates[0] != undefined ? req.body.address.coordinates[0] : student.address.coordinates[0];
         student.address.coordinates[1] = req.body.address.coordinates[1] != undefined ? req.body.address.coordinates[1] : student.address.coordinates[1];
-        const updateStudent = await user.save();
+        const updateStudent = await User.save();
 
         // Return the updated student
 
