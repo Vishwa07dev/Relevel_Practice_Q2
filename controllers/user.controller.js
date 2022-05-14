@@ -32,33 +32,35 @@ exports.createUser = async (req,res) =>{
 
 
 exports.updateUser = async(req,res) =>{
-    const student = await User.findOne({
+    try{
+        const student = await User.findOne({
         _id: req.params.id
-    });
+        });
 
-    if (student == null) {
-        return res.status(200).send({
-            message: "student doesn't exist"
+        if (student == null) {
+            return res.status(200).send({
+                message: "student doesn't exist"
+            })
+        }
+        // Update the attributes of the student update
+
+        student.name = req.body.name != undefined ? req.body.name : student.name;
+        student.emailId = req.body.emailId != undefined ? req.body.emailId : student.emailId;
+        student.linkedInProfile = req.body.linkedInProfile != undefined ? req.body.linkedInProfile : student.linkedInProfile;
+        student.address = req.body.address != undefined ? req.body.address : student.address;
+        student.address.coordinates[0] = req.body.address.coordinates[0] != undefined ? req.body.address.coordinates[0] : student.address.coordinates[0];
+        student.address.coordinates[1] = req.body.address.coordinates[1] != undefined ? req.body.address.coordinates[1] : student.address.coordinates[1];
+        const updateStudent = await user.save();
+
+        // Return the updated student
+
+        return res.status(200).send(updateStudent);
+    }catch(err){
+        console.error("Error while updating  Student", err.message);
+        res.status(500).send({
+            message : "some internal error while updating new Student"
         })
     }
-
-    const user =  await User.findOne({_id : req._id});
-    console.log(user, req._id);
-
-
-    // Update the attributes of the student update
-
-    student.name = req.body.name != undefined ? req.body.name : student.name;
-    student.emailId = req.body.emailId != undefined ? req.body.emailId : student.emailId;
-    student.linkedInProfile = req.body.linkedInProfile != undefined ? req.body.linkedInProfile : student.linkedInProfile;
-    student.address = req.body.address != undefined ? req.body.address : student.address;
-    student.address.coordinates[0] = req.body.address.coordinates[0] != undefined ? req.body.address.coordinates[0] : student.address.coordinates[0];
-    student.address.coordinates[1] = req.body.address.coordinates[1] != undefined ? req.body.address.coordinates[1] : student.address.coordinates[1];
-    const updateStudent = await user.save();
-
-    // Return the updated student
-
-    return res.status(200).send(updateStudent);
 }
 
 
