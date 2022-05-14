@@ -22,7 +22,8 @@ const userSchema = new mongoose.Schema({
     },
     address : {      //Embedded schema
         type : addressSchema,
-        required : true
+        required : true,
+        index : '2dsphere'
     }
 
 });

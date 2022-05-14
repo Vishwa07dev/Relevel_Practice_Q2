@@ -58,3 +58,35 @@
 
     return res.status(200).send(updatedUser);
  }
+
+
+ /**
+  * Controller for searching the user
+  * 
+  * I need to find all the users within the provided
+  * range from a given point
+  */
+ exports.getUser = async (req, res) => {
+     
+     const queryObj = {
+         address : {
+             $near : {
+                 $geometry : {
+                     type : 'Point',
+                     coordinates : [ req.query.lat, req.query.long]
+                 },
+                 $maxDistance : req.query.maxDistance
+             }
+         }
+     }
+    try{
+        const users = await User.find(queryObj);
+        res.status(200).send(users);
+    }catch(err){
+        console.log(err);
+        res.status(500).send({
+            message : "Some Internal error"
+        });
+    }
+     
+ }
